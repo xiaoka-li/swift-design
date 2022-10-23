@@ -41,11 +41,7 @@ struct ContentView: View {
 //        .cornerRadius(30.0)
 //        .mask(RoundedRectangle(cornerRadius: 30,style: .continuous))
         .shadow(color: Color("Shadow").opacity(0.3), radius: 10,x: 0,y: 10)
-        .overlay(
-            RoundedRectangle(cornerRadius: 30,style: .continuous)
-                .stroke(.linearGradient(colors: [.white.opacity(0.3),.black.opacity(0.1)], startPoint: .top, endPoint: .bottom))
-            .blendMode(.overlay)
-        )
+        .strokeStyle(cornerRadius: 30.0)
         .padding(.horizontal,20.0)
         .background(
             Image("Blob 1").offset(x:250,y: -100)
