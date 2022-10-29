@@ -8,25 +8,23 @@
 import SwiftUI
 
 struct AccountView: View {
-    
-    @State var isPannd=false;
-    
+    @State var isPannd = false
+
     var body: some View {
-        NavigationView{
-            List{
+        NavigationView {
+            List {
                 profile
                 menu
                 links
-                
             }
             .listStyle(.insetGrouped)
             .navigationTitle("Account")
         }
     }
-    
-    var profile:some View{
+
+    var profile: some View {
         VStack(spacing: 8) {
-            Image(systemName:"person.crop.circle.badge.checkmark")
+            Image(systemName: "person.crop.circle.badge.checkmark")
                 .symbolVariant(.circle.fill)
                 .font(.largeTitle)
                 .symbolRenderingMode(.palette)
@@ -35,9 +33,14 @@ struct AccountView: View {
                 .background(Circle().fill(.ultraThinMaterial))
                 .background(
                     HexagonView()
-                    .offset(x:-50,y:-100)
+                        .offset(x: -50, y: -100)
                 )
-            .frame(maxWidth: .infinity)
+                .background(
+                    BlobView()
+                        .offset(x: 200, y: 0)
+                        .scaleEffect(0.6)
+                )
+                .frame(maxWidth: .infinity)
             Text("xiaoka")
                 .font(.title.weight(.semibold))
             HStack {
@@ -49,28 +52,29 @@ struct AccountView: View {
         }
         .padding()
     }
-    var menu:some View{
-        Section{
-            NavigationLink(destination: ContentView()){
-                Label("Setting",systemImage:"gear")
+
+    var menu: some View {
+        Section {
+            NavigationLink(destination: HomeView()) {
+                Label("Setting", systemImage: "gear")
             }
-            NavigationLink{ContentView()} label: {
-                Label("Bill",systemImage:"creditcard")
+            NavigationLink { HomeView() } label: {
+                Label("Bill", systemImage: "creditcard")
             }
-            NavigationLink{ContentView()} label: {
-                Label("Help",systemImage:"questionmark.circle")
+            NavigationLink { HomeView() } label: {
+                Label("Help", systemImage: "questionmark.circle")
             }
         }
         .foregroundColor(.primary)
         .listRowSeparatorTint(.blue)
         .listRowSeparator(.hidden)
     }
-    
-    var links:some View{
+
+    var links: some View {
         Section {
             Link(destination: URL(string: "https://github.com/xiaoka-li")!) {
                 HStack {
-                    Label("website",systemImage: "house")
+                    Label("website", systemImage: "house")
                     Spacer()
                     Image(systemName: "link")
                         .foregroundColor(.secondary)
@@ -84,28 +88,27 @@ struct AccountView: View {
             }
             Link(destination: URL(string: "https://youtube.com")!) {
                 HStack {
-                    Label("website",systemImage: "tv")
+                    Label("website", systemImage: "tv")
                     Spacer()
                     Image(systemName: "link")
                         .foregroundColor(.secondary)
-                    
                 }
             }
-            .swipeActions(edge: .trailing){
-                Button(role: .destructive){} label: {
-                    Label("Delete",systemImage: "trash")
+            .swipeActions(edge: .trailing) {
+                Button(role: .destructive) {} label: {
+                    Label("Delete", systemImage: "trash")
                 }
                 pinButton
             }
         }.foregroundColor(.primary)
     }
-    
-    var pinButton:some View{
-        Button{isPannd.toggle()} label: {
-            if isPannd{
-                Label("UnPin",systemImage: "pin.slash")
-            }else{
-                Label("Pin",systemImage: "pin")
+
+    var pinButton: some View {
+        Button { isPannd.toggle() } label: {
+            if isPannd {
+                Label("UnPin", systemImage: "pin.slash")
+            } else {
+                Label("Pin", systemImage: "pin")
             }
         }.tint(isPannd ? .gray : .yellow)
     }
@@ -116,4 +119,3 @@ struct AccountView_Previews: PreviewProvider {
         AccountView()
     }
 }
- 
