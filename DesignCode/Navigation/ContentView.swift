@@ -11,20 +11,19 @@ struct ContentView: View {
     @AppStorage("selectedTab") var selectedTab: Tab = .home
     var body: some View {
         ZStack(alignment: .bottom) {
-            Group {
-                switch selectedTab {
-                case .home:
-                    HomeView()
-                case .search:
-                    AccountView()
-                case .notifications:
-                    AccountView()
-                case .my:
-                    AccountView()
-                }
-            }.frame(maxWidth: .infinity, maxHeight: .infinity)
-
-            TabBar();
+            switch selectedTab {
+            case .home:
+                HomeView()
+            case .search:
+                AccountView()
+            case .notifications:
+                AccountView()
+            case .my:
+                AccountView()
+            }
+            TabBar()
+        }.safeAreaInset(edge: .bottom) {
+            Color.clear.frame(height: 44)
         }
     }
 }
