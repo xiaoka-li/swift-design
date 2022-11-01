@@ -33,13 +33,14 @@ struct NavigationBar: View {
                     .frame(width: 26, height: 26)
                     .cornerRadius(10)
                     .padding(8)
-                    .offset(y: hasSrolled ? - 4 : 0)
+                    .offset(y: hasSrolled ? -4 : 0)
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
                     .strokeStyle(cornerRadius: 18)
             }
             .frame(maxWidth: .infinity, alignment: .trailing)
             .padding(.trailing, 20)
-            .offset(y: hasSrolled ? - 4 : 0)
+            .padding(.top, 20)
+            .offset(y: hasSrolled ? -4 : 0)
         }
         .frame(height: hasSrolled ? 44 : 70)
         .frame(maxHeight: .infinity, alignment: .top)
